@@ -31,7 +31,9 @@ def fetch_prices_from_sheet():
         response = requests.get(url)
         response.raise_for_status()
         f = StringIO(response.text)
-        reader = csv.DictReader(f)
+        lines = f.readlines()
+        # Skip the first two rows
+        reader = csv.DictReader(lines[2:])
         prices = {row['Item']: int(row['Price']) for row in reader}
         print("Prices fetched:", prices)
     except requests.exceptions.RequestException as e:

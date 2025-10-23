@@ -576,10 +576,9 @@ class MinecraftShopApp:
             qty = int(qty_text)
             price = self.price_manager.get_price(self.selected_item)
             total = price * qty
-            self.total_label.config(text=f"Total: ${price} × {qty} = ${total}")
+            self.total_label.config(text=f"Total: ${total}")
         else:
-            price = self.price_manager.get_price(self.selected_item)
-            self.total_label.config(text=f"Total: ${price} × 0 = $0")
+            self.total_label.config(text="Total: $0")
     
     def _place_order(self):
         """Place an order."""
